@@ -31,11 +31,14 @@ uninstall() {
   rm -rf "$conf_dir"
 }
 
-while getopts 'u' flag; do
+while getopts 'ur' flag; do
   case "${flag}" in
   u)
     uninstall
     exit 0
+    ;;
+  r)
+    uninstall  #then go on installing as normal
     ;;
   *)
     print_usage
