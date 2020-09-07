@@ -19,7 +19,7 @@ install() {
   cp -r "$DIR/conf" "$conf_dir"
   touch "$conf_dir/users.ids"
   touch "$conf_dir/admins.ids"
-  printf TOKEN > "$conf_dir/TOKEN"
+  printf TOKEN >"$conf_dir/TOKEN"
 
   printf "Done.\n"
 }
@@ -41,7 +41,7 @@ while getopts 'urt:' flag; do
     exit 0
     ;;
   r)
-    uninstall  #then go on installing as normal
+    uninstall #then go on installing as normal
     ;;
   t)
     TOKEN=$OPTARG
