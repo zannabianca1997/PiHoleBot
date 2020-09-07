@@ -1,0 +1,15 @@
+{
+  "user_commands": [
+    "enable",
+    "disable",
+    "status",
+    "version"
+  ],
+  "admin_commands": [
+    "updatePihole",
+    "restartdns",
+    "updateGravity"
+  ],
+  "user_ids": "user.ids",
+  "admin_ids": "admin.ids"
+}
