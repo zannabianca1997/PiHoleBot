@@ -10,6 +10,6 @@
     "restartdns",
     "updateGravity"
   ],
-  "user_ids": "user.ids",
-  "admin_ids": "admin.ids"
+  "user_ids": "../conf/users.ids",
+  "admin_ids": "../conf/admins.ids"
 }
