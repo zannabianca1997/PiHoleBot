@@ -27,7 +27,7 @@ uninstall() {
   printf "Removing scripts from %s\n" "$install_dir"
   rm -rf "$install_dir"
 
-  printf "Removing configuration files from %s\n" "$conf_dir" 
+  printf "Removing configuration files from %s\n" "$conf_dir"
   rm -rf "$conf_dir"
 }
 

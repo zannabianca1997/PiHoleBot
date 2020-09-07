@@ -141,7 +141,8 @@ cython_debug/
 
 # chat id files
 *.ids
-
+# token file
+TOKEN
 # log files
 *.log
 
