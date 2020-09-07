@@ -19,6 +19,7 @@ install() {
   cp -r "$DIR/conf" "$conf_dir"
   touch "$conf_dir/users.ids"
   touch "$conf_dir/admins.ids"
+  printf TOKEN > "$conf_dir/TOKEN"
 
   printf "Done.\n"
 }
@@ -31,7 +32,9 @@ uninstall() {
   rm -rf "$conf_dir"
 }
 
-while getopts 'ur' flag; do
+TOKEN=""
+
+while getopts 'urt:' flag; do
   case "${flag}" in
   u)
     uninstall
@@ -39,6 +42,9 @@ while getopts 'ur' flag; do
     ;;
   r)
     uninstall  #then go on installing as normal
+    ;;
+  t)
+    TOKEN=$OPTARG
     ;;
   *)
     print_usage
