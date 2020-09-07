@@ -7,32 +7,28 @@ install_dir="/opt/PiHoleBot"
 conf_dir="/etc/opt/PiHoleBot"
 
 print_usage() {
-  printf "Usage: install [-u]"
-  printf "Install the bot on the system. Use the -u to uninstall"
+  printf "Usage: install [-u]\n"
+  printf "Install the bot on the system. Use the -u to uninstall\n"
 }
 
 install() {
-  printf "Creating directories"
-  mkdir "$install_dir"
-  mkdir "$conf_dir"
+  printf "Copying scripts to %s\n" "$install_dir"
+  cp -r "$DIR/src" "$install_dir"
 
-  printf "Copying scripts to %s" "$install_dir"
-  cp "$DIR/src/*" "$install_dir/"
-
-  printf "Copying configuration files to %s" "$conf_dir"
-  mv "$DIR/conf" "$conf_dir/"
+  printf "Copying configuration files to %s\n" "$conf_dir"
+  cp -r "$DIR/conf" "$conf_dir"
   touch "$conf_dir/users.ids"
   touch "$conf_dir/admins.ids"
 
-  printf "Done."
+  printf "Done.\n"
 }
 
 uninstall(){
-  printf "Removing scripts from %s" "$install_dir"
+  printf "Removing scripts from %s\n" "$install_dir"
   rm -rf "$install_dir"
 
-  printf "Removing configuration files from %s" "$conf_dir"
-  mv "$DIR/conf" "$conf_dir/"
+  printf "Removing configuration files from %s\n" "$conf_dir" 
+  rm -rf "$conf_dir"
 }
 
 while getopts 'u' flag; do
