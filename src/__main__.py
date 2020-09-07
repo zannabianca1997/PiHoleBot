@@ -11,6 +11,7 @@ from pihole import launch_command
 from setup import user_commands, admin_commands, token_file
 from users import users_list, admins_list
 
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
