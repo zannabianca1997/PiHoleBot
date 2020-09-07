@@ -19,7 +19,7 @@ install() {
   cp -r "$DIR/conf" "$conf_dir"
   touch "$conf_dir/users.ids"
   touch "$conf_dir/admins.ids"
-  printf TOKEN >"$conf_dir/TOKEN"
+  printf "%s" "$TOKEN" >"$conf_dir/TOKEN"
 
   printf "Done.\n"
 }
