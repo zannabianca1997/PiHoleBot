@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # find the directory of the script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 install_dir="/opt/PiHoleBot"
 conf_dir="/etc/opt/PiHoleBot"
@@ -23,7 +23,7 @@ install() {
   printf "Done.\n"
 }
 
-uninstall(){
+uninstall() {
   printf "Removing scripts from %s\n" "$install_dir"
   rm -rf "$install_dir"
 
@@ -33,10 +33,14 @@ uninstall(){
 
 while getopts 'u' flag; do
   case "${flag}" in
-    u) uninstall
-       exit 0 ;;
-    *) print_usage
-       exit 1 ;;
+  u)
+    uninstall
+    exit 0
+    ;;
+  *)
+    print_usage
+    exit 1
+    ;;
   esac
 done
 install
