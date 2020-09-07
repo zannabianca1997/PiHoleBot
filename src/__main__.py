@@ -1,6 +1,5 @@
 import asyncio
 import logging
-import sys
 from functools import wraps
 
 import telepot
@@ -9,7 +8,7 @@ import telepot.aio.routing
 from telepot.aio.loop import MessageLoop
 
 from pihole import launch_command
-from setup import user_commands, admin_commands
+from setup import user_commands, admin_commands, token_file
 from users import users_list, admins_list
 
 logger = logging.getLogger(__name__)
@@ -67,7 +66,8 @@ class PiHoleBot(telepot.aio.Bot):
                                       reply_to_message_id=msg["message_id"])
 
 
-TOKEN = sys.argv[1]  # get token from command-line
+with open(token_file) as tkn_file:
+    TOKEN = tkn_file.read()  # get token from file
 bot = PiHoleBot(TOKEN)
 loop = asyncio.get_event_loop()
 loop.create_task(MessageLoop(bot).run_forever())
