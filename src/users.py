@@ -19,7 +19,7 @@ def add_user(user_id):
     logger.info(f"Adding user {user_ids} to the userlist")
     users_list.append(user_id)
     with open(user_ids, "w") as user_file:
-        user_file.write("\n".join(users_list))
+        user_file.write("\n".join(str(user) for user in users_list))
 
 
 def remove_user(user_id):
@@ -31,7 +31,7 @@ def remove_user(user_id):
         remove_admin(user_id)
     users_list.remove(user_id)
     with open(user_ids, "w") as user_file:
-        user_file.write("\n".join(users_list))
+        user_file.write("\n".join(str(user) for user in users_list))
 
 
 def add_admin(user_id):
@@ -41,7 +41,7 @@ def add_admin(user_id):
     logger.info(f"Making user {user_ids} admin")
     admins_list.append(user_id)
     with open(admin_ids, "w") as admin_file:
-        admin_file.write("\n".join(admins_list))
+        admin_file.write("\n".join(str(admin) for admin in admins_list))
 
 
 def remove_admin(user_id):
@@ -51,4 +51,4 @@ def remove_admin(user_id):
     logger.info(f"Removing admin {user_id}")
     admins_list.remove(user_id)
     with open(admin_ids, "w") as admin_file:
-        admin_file.write("\n".join(admins_list))
+        admin_file.write("\n".join(str(admin) for admin in admins_list))
