@@ -3,6 +3,7 @@ from functools import wraps
 
 import telepot
 import telepot.aio
+import telepot.aio.routing
 
 from pihole_control import launch_command
 from setup import user_commands, admin_commands
@@ -15,7 +16,7 @@ class PiHoleBot(telepot.aio.Bot):
     def __init__(self, token, loop=None):
         super(PiHoleBot, self).__init__(token, loop)
         self.command_router = telepot.aio.helper.Router(
-            telepot.routing.by_chat_command(pass_args=True),
+            telepot.aio.routing.by_chat_command(pass_args=True),
             {
                 "pihole": self.pihole_command,
                 (None,): self.not_a_command,
