@@ -70,7 +70,7 @@ async def edit_users(bot):
     user = (await bot.getChatMember(editing_admin, editing_admin))["user"]
     logger.info(f"Admin {user['first_name']} ({editing_admin}) start editing users")
     offset = -1
-    while not exiting:
+    while True:
         await bot.sendMessage(editing_admin, "Mandami l'utente che vuoi aggiungere, /stop per uscire")
         exiting, user_given, offset = await _get_user_or_exit(bot, editing_admin, offset)
         if exiting:
