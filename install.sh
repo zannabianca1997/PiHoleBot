@@ -21,7 +21,13 @@ install() {
   touch "$conf_dir/admins.ids"
   printf "%s" "$TOKEN" >"$conf_dir/TOKEN"
 
-  printf "Done.\n"
+  printf "Creating user PiHoleBot to run service\n"
+  useradd PiHoleBot
+
+  printf "Adding service\n"
+  cp "$DIR/PiHoleBot.service" /etc/systemd/system/PiHoleBot.service
+
+  printf "Done. Use 'systemctl PiHoleBot start' to launch\n"
 }
 
 uninstall() {
@@ -30,6 +36,12 @@ uninstall() {
 
   printf "Removing configuration files from %s\n" "$conf_dir"
   rm -rf "$conf_dir"
+
+  printf "Removing user\n"
+  userdel PiHoleBot
+
+  printf "Removing service\n"
+  rm /etc/systemd/system/PiHoleBot.service
 }
 
 TOKEN=""

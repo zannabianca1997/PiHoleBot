@@ -1,0 +1,13 @@
+[Unit]
+Description = A telegram bot that permit sending commands to the pi
+After = multi-user.target
+
+[Service]
+Type = simple
+ExecStart = /usr/bin/python3 /opt/PiHoleBot
+WorkingDirectory = /opt/PiHoleBot
+User = PiHoleBot
+Group = PiHoleBot
+
+[Install]
+WantedBy = multi-user.target
