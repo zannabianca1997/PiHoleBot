@@ -16,7 +16,7 @@ logger.info(f"Loaded {len(users_list)} users, of which {len(admins_list)} are ad
 def add_user(user_id):
     global admins_list, users_list
     assert user_id not in users_list
-    logger.info(f"Adding user {user_ids} to the userlist")
+    logger.info(f"Adding user {user_id} to the userlist")
     users_list.append(user_id)
     with open(user_ids, "w") as user_file:
         user_file.write("\n".join(str(user) for user in users_list))
@@ -38,7 +38,7 @@ def add_admin(user_id):
     global admins_list, users_list
     assert user_id in users_list
     assert user_id not in admins_list
-    logger.info(f"Making user {user_ids} admin")
+    logger.info(f"Making user {user_id} admin")
     admins_list.append(user_id)
     with open(admin_ids, "w") as admin_file:
         admin_file.write("\n".join(str(admin) for admin in admins_list))
