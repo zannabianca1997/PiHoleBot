@@ -5,6 +5,7 @@ import telepot
 import telepot.aio
 
 from pihole_control import launch_command
+from setup import user_commands, admin_commands
 from users import users_list, admins_list
 
 logger = logging.getLogger(__name__)
@@ -14,7 +15,7 @@ class PiHoleBot(telepot.aio.Bot):
     def __init__(self, token, loop=None):
         super(PiHoleBot, self).__init__(token, loop)
         self.command_router = telepot.aio.helper.Router(
-            telepot.aio.routing.by_chat_command(pass_args=True),
+            telepot.routing.by_chat_command(pass_args=True),
             {
                 "pihole": self.pihole_command,
                 (None,): self.not_a_command,
