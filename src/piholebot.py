@@ -1,12 +1,13 @@
+import logging
 from functools import wraps
 
 import telepot
 import telepot.aio
 
-from __main__ import logger
 from pihole_control import launch_command
 from users import users_list, admins_list
 
+logger = logging.getLogger(__name__)
 
 class PiHoleBot(telepot.aio.Bot):
     @wraps(telepot.aio.Bot.__init__)
