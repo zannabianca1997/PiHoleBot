@@ -15,6 +15,7 @@ general_log.setLevel(logging.INFO)
 general_log.setFormatter(
     logging.Formatter('%(asctime)s:%(name)s:%(levelname)s: %(message)s')
 )
+logger.addHandler(general_log)
 
 with open(token_file) as tkn_file:
     TOKEN = tkn_file.read()

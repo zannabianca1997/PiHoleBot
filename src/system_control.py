@@ -4,7 +4,6 @@ import logging
 from messagestream import MessageStream
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 async def echo(input, output):

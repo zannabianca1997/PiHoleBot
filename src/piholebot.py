@@ -10,7 +10,6 @@ from setup import user_commands, admin_commands
 from users import users_list, admins_list
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 class PiHoleBot(telepot.aio.Bot):
     @wraps(telepot.aio.Bot.__init__)

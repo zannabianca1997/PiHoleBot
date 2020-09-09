@@ -6,7 +6,6 @@ from telepot.aio import Bot
 from telepot.aio.helper import Sender, Editor
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 class MessageStream:
