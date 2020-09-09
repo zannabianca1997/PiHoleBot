@@ -9,13 +9,14 @@ from users import users_list
 
 logger = logging.getLogger(__name__)
 # logging setup
-logger.setLevel(logging.INFO)
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.INFO)
 general_log = logging.FileHandler(log_file)
 general_log.setLevel(logging.INFO)
 general_log.setFormatter(
     logging.Formatter('%(asctime)s:%(name)s:%(levelname)s: %(message)s')
 )
-logger.addHandler(general_log)
+root_logger.addHandler(general_log)
 
 with open(token_file) as tkn_file:
     TOKEN = tkn_file.read()
