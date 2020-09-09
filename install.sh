@@ -34,7 +34,7 @@ install() {
   chown root:root /etc/sudoers.d/PiHoleBot
   chmod 440 /etc/sudoers.d/PiHoleBot
   # permitting to edit log
-  chown PiHoleBot "$log_dir"
+  chown PiHoleBot:PiHoleBot "$log_dir"
 
   printf "Adding service\n"
   cp "$DIR/PiHoleBot.service" /etc/systemd/system/PiHoleBot.service
