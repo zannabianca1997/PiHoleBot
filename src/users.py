@@ -3,6 +3,7 @@ import logging
 from setup import user_ids, admin_ids
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 with open(user_ids) as user_file:
     users_list = [int(line) for line in user_file]

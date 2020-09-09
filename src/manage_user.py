@@ -10,6 +10,7 @@ from users import add_user, add_admin
 from users import admins_list, users_list
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 async def first_setup(bot):
