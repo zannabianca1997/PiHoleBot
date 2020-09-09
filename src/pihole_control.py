@@ -8,6 +8,8 @@ logger = logging.getLogger(__name__)
 async def launch_command(bot, chat_id, command, args):
     return await system_control.launch_command(
         bot, chat_id,
-        f"pihole {command} {' '.join(args)}",
+        f"sudo pihole {command} {' '.join(args)}",
         logger
     )
+
+# todo: run commands as superuser
