@@ -14,7 +14,7 @@ print_usage() {
 
 install() {
   printf "Installing dependencies\n"
-  apt-get install python3
+  apt-get install -y python3 python3-pip 
   pip3 install telepot
 
   printf "Copying scripts to %s\n" "$install_dir"
