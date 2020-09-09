@@ -13,6 +13,10 @@ print_usage() {
 }
 
 install() {
+  printf "Installing dependencies\n"
+  apt-get install python3
+  pip3 install telepot
+
   printf "Copying scripts to %s\n" "$install_dir"
   cp -r "$DIR/src" "$install_dir"
 
