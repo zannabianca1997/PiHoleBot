@@ -23,6 +23,9 @@ install() {
 
   printf "Creating user PiHoleBot to run service\n"
   useradd PiHoleBot
+  cp "$DIR/sudo_file" /etc/sudoers.d/PiHoleBot
+  chown root:root /etc/sudoers.d/PiHoleBot
+  chmod 440 /etc/sudoers.d/PiHoleBot
 
   printf "Adding service\n"
   cp "$DIR/PiHoleBot.service" /etc/systemd/system/PiHoleBot.service
@@ -32,13 +35,14 @@ install() {
 
 uninstall() {
   printf "Removing scripts from %s\n" "$install_dir"
-  rm -rf "$install_dir"
+  rm -r "$install_dir"
 
   printf "Removing configuration files from %s\n" "$conf_dir"
-  rm -rf "$conf_dir"
+  rm -r "$conf_dir"
 
   printf "Removing user\n"
   userdel PiHoleBot
+  rm /etc/sudoers.d/PiHoleBot
 
   printf "Removing service\n"
   rm /etc/systemd/system/PiHoleBot.service
