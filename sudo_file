@@ -1,0 +1,2 @@
+# Permit the bot to use pihole commands
+PiHoleBot ALL=NOPASSWD: /usr/local/bin/pihole
