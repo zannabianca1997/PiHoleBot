@@ -12,4 +12,3 @@ async def launch_command(bot, chat_id, command, args):
         logger
     )
 
-# todo: run commands as superuser

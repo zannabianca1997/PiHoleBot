@@ -12,6 +12,7 @@
   ],
   "user_ids": "/etc/opt/PiHoleBot/users.ids",
   "admin_ids": "/etc/opt/PiHoleBot/admins.ids",
-  "token_file": "/etc/opt/PiHoleBot/TOKEN"
+  "token_file": "/etc/opt/PiHoleBot/TOKEN",
+  "log_file": "/var/opt/PiHoleBot/log"
 }
 

@@ -5,6 +5,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 install_dir="/opt/PiHoleBot"
 conf_dir="/etc/opt/PiHoleBot"
+log_dir="/var/opt/PiHoleBot"
 
 print_usage() {
   printf "Usage: install [-u]\n"
@@ -21,11 +22,19 @@ install() {
   touch "$conf_dir/admins.ids"
   printf "%s" "$TOKEN" >"$conf_dir/TOKEN"
 
+  printf "Creating log directory %s\n" "$log_dir"
+  mkdir "$log_dir"
+
   printf "Creating user PiHoleBot to run service\n"
   useradd PiHoleBot
+
+  printf "Giving rights to user"
+  # permitting it to launch pihole as sudo
   cp "$DIR/sudo_file" /etc/sudoers.d/PiHoleBot
   chown root:root /etc/sudoers.d/PiHoleBot
   chmod 440 /etc/sudoers.d/PiHoleBot
+  # permitting to edit log
+  chown PiHoleBot "$log_dir"
 
   printf "Adding service\n"
   cp "$DIR/PiHoleBot.service" /etc/systemd/system/PiHoleBot.service
@@ -39,6 +48,9 @@ uninstall() {
 
   printf "Removing configuration files from %s\n" "$conf_dir"
   rm -r "$conf_dir"
+
+  printf "Removing log files from %s\n" "$log_dir"
+  rm -r "$log_dir"
 
   printf "Removing user\n"
   userdel PiHoleBot
