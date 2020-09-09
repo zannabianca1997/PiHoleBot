@@ -39,7 +39,7 @@ install() {
   printf "Adding service\n"
   cp "$DIR/PiHoleBot.service" /etc/systemd/system/PiHoleBot.service
 
-  printf "Done. Use 'systemctl PiHoleBot start' to launch\n"
+  printf "Done. Use 'systemctl start PiHoleBot' to launch\n"
 }
 
 uninstall() {
